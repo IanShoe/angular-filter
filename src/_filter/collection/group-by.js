@@ -30,12 +30,13 @@ angular.module('a8m.group-by', [ 'a8m.filter-watcher' ])
         var result = {};
         var prop;
 
-        forEach( collection, function( elm ) {
+        forEach( collection, function( elm, index ) {
           prop = getter(elm);
 
           if(!result[prop]) {
             result[prop] = [];
           }
+          elm.$$originalIndex = index;
           result[prop].push(elm);
         });
         return result;
